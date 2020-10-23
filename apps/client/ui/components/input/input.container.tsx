@@ -10,5 +10,14 @@ import * as Presenter from './input.presenter';
 // component
 // ===============================
 export const Component = (props): React.ReactElement => {
-  return <Presenter.Component />;
+  const [value, setValue] = React.useState('');
+
+  const handleChange = React.useCallback(
+    (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+      setValue(event.target.value);
+    },
+    []
+  );
+
+  return <Presenter.Component handleChange={handleChange} />;
 };

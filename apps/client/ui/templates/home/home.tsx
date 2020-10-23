@@ -29,5 +29,8 @@ const Wrap = styled.main`
   grid-template-areas: 'input result';
 
   grid-template-columns: 1fr 1fr;
+  grid-gap: ${(props) => props.theme.space(2)}px;
   grid-template-rows: 1fr;
+
+  padding: ${(props) => props.theme.space(2)}px;
 `;
