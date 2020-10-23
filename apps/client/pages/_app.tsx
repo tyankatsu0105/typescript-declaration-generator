@@ -1,24 +1,28 @@
 import React from 'react';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
-import { ReactComponent as NxLogo } from '../public/nx-logo-white.svg';
-import './styles.css';
+
+import { ThemeProvider } from 'styled-components';
+import { theme } from '~client/modules/theme';
+import { GlobalStyle } from '~client/styles/global-style';
+
+import * as Layouts from '~client/layouts';
+import 'minireset.css';
 
 const CustomApp = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <Head>
-        <title>Welcome to client!</title>
+        <title>TypeScript Declaration Generator</title>
       </Head>
-      <div className="app">
-        <header className="flex">
-          <NxLogo width="75" height="50" />
-          <h1>Welcome to client!</h1>
-        </header>
-        <main>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <Layouts.Container.Component>
+          <Layouts.Header.Component />
           <Component {...pageProps} />
-        </main>
-      </div>
+          <Layouts.Footer.Component />
+        </Layouts.Container.Component>
+      </ThemeProvider>
     </>
   );
 };
